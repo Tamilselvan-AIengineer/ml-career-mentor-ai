@@ -2,11 +2,11 @@ def analyze_skills(student_skills):
 
     required_skills = [
         "python",
+        "data structures",
         "machine learning",
         "deep learning",
-        "data structures",
-        "sql",
         "statistics",
+        "sql",
         "git",
         "docker"
     ]
