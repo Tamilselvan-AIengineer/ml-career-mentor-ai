@@ -1,28 +1,44 @@
 from sentence_transformers import SentenceTransformer
 import faiss
-import json
 import numpy as np
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+class CareerRAG:
 
-with open("data/career_data.json") as f:
-    data = json.load(f)
+    def __init__(self):
 
-documents = [d["career"] + " " + " ".join(d["skills"]) for d in data]
+        self.model = SentenceTransformer(
+            "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        )
 
-embeddings = model.encode(documents)
+        self.docs = []
+        self.load_docs()
 
-dimension = embeddings.shape[1]
+        embeddings = self.model.encode(self.docs)
 
-index = faiss.IndexFlatL2(dimension)
-index.add(np.array(embeddings))
+        dim = embeddings.shape[1]
+        self.index = faiss.IndexFlatL2(dim)
+        self.index.add(np.array(embeddings))
 
+    def load_docs(self):
 
-def retrieve_context(query):
+        files = [
+            "data/careers.txt",
+            "data/skills.txt",
+            "data/courses.txt"
+        ]
 
-    q_emb = model.encode([query])
+        for f in files:
+            with open(f) as file:
+                self.docs += file.readlines()
 
-    D, I = index.search(np.array(q_emb), k=1)
+    def retrieve(self, query):
 
+        q = self.model.encode([query])
+        D, I = self.index.search(np.array(q), k=3)
 
-    return data[I[0][0]]
+        context = ""
+        for i in I[0]:
+            context += self.docs[i]
+
+        return context
+        
