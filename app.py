@@ -1,57 +1,65 @@
 import streamlit as st
-from rag_engine import retrieve_context
-from skill_analyzer import analyze_skill_gap
-from translator import translate_input
+from rag_engine import CareerRAG
+from skill_analyzer import analyze_skills
+from translator import translate_to_english
+from continual_learning import update_profile
+from transformers import pipeline
 
-st.title("🎓 AI Career Mentor Guide")
+st.title("🎓 AI Career Mentor")
 
-st.sidebar.header("Student Profile")
+st.write("Multilingual AI powered career guidance")
 
-name = st.sidebar.text_input("Name")
+rag = CareerRAG()
 
-year = st.sidebar.selectbox(
-"Academic Year",
-["1st Year","2nd Year","3rd Year","4th Year"]
+generator = pipeline(
+    "text2text-generation",
+    model="google/flan-t5-base"
 )
 
-skills = st.sidebar.text_input(
-"Your skills (comma separated)"
-)
+name = st.text_input("Student Name")
 
-query = st.text_input(
-"Ask career guidance question"
-)
+query = st.text_input("Ask Career Question")
 
-if query:
+skills = st.text_input("Your Skills (comma separated)")
 
-    query = translate_input(query)
 
-    context = retrieve_context(query)
+if st.button("Get Career Advice"):
 
-    st.subheader("Suggested Career")
+    english_query = translate_to_english(query)
 
-    st.write(context["career"])
+    context = rag.retrieve(english_query)
 
-    student_skills = skills.split(",")
+    prompt = f"""
+    Student Question: {english_query}
 
-    missing = analyze_skill_gap(
-        student_skills,
-        context["skills"]
-    )
+    Context:
+    {context}
 
-    st.subheader("Required Skills")
+    Provide career guidance and roadmap.
+    """
 
-    st.write(context["skills"])
+    result = generator(prompt, max_length=200)
 
-    st.subheader("Skill Gap")
+    st.subheader("Career Guidance")
+
+    st.write(result[0]["generated_text"])
+
+    skill_list = [s.strip().lower() for s in skills.split(",")]
+
+    missing = analyze_skills(skill_list)
+
+    st.subheader("Skill Gap Analysis")
 
     if missing:
-        st.write(missing)
+
+        st.write("You need to learn:")
+
+        for s in missing:
+            st.write("-", s)
+
     else:
-        st.success("You already have the required skills!")
+        st.write("Your skills match industry requirements")
 
-    st.subheader("Career Roadmap")
+    update_profile(name, skill_list)
 
-    for step in context["roadmap"]:
-
-        st.write("•", step)
+    st.success("Profile updated for continual learning")
