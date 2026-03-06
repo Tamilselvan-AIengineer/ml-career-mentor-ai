@@ -24,4 +24,5 @@ def retrieve_context(query):
 
     D, I = index.search(np.array(q_emb), k=1)
 
+
     return data[I[0][0]]
