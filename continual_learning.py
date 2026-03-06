@@ -12,16 +12,11 @@ def load_profiles():
         return {}
 
 
-def save_profiles(data):
-
-    with open(FILE, "w") as f:
-        json.dump(data, f)
-
-
 def update_profile(name, skills):
 
-    data = load_profiles()
+    profiles = load_profiles()
 
-    data[name] = skills
+    profiles[name] = skills
 
-    save_profiles(data)
+    with open(FILE, "w") as f:
+        json.dump(profiles, f)
