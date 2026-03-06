@@ -1,36 +1,38 @@
 import streamlit as st
 from rag_engine import CareerRAG
 from skill_analyzer import analyze_skills
-from translator import translate_to_english
 from continual_learning import update_profile
+from translator import Translator
 from transformers import pipeline
 
-st.title("🎓 AI Career Mentor")
+st.title("🎓 Multi-Lingual AI Career Mentor")
 
-st.write("Multilingual AI powered career guidance")
+st.write("LLM + Context-Aware RAG + Continual Learning")
 
 rag = CareerRAG()
 
-generator = pipeline(
+translator = Translator()
+
+llm = pipeline(
     "text2text-generation",
     model="google/flan-t5-base"
 )
 
 name = st.text_input("Student Name")
 
-query = st.text_input("Ask Career Question")
+query = st.text_input("Ask your career question")
 
 skills = st.text_input("Your Skills (comma separated)")
 
 
-if st.button("Get Career Advice"):
+if st.button("Generate Career Advice"):
 
-    english_query = translate_to_english(query)
+    english_query = translator.translate_to_english(query)
 
     context = rag.retrieve(english_query)
 
     prompt = f"""
-    Student Question: {english_query}
+    Student question: {english_query}
 
     Context:
     {context}
@@ -38,7 +40,7 @@ if st.button("Get Career Advice"):
     Provide career guidance and roadmap.
     """
 
-    result = generator(prompt, max_length=200)
+    result = llm(prompt, max_length=200)
 
     st.subheader("Career Guidance")
 
@@ -52,14 +54,15 @@ if st.button("Get Career Advice"):
 
     if missing:
 
-        st.write("You need to learn:")
+        st.write("Missing skills:")
 
-        for s in missing:
-            st.write("-", s)
+        for m in missing:
+            st.write("-", m)
 
     else:
-        st.write("Your skills match industry requirements")
+
+        st.write("Your skills match industry expectations")
 
     update_profile(name, skill_list)
 
-    st.success("Profile updated for continual learning")
+    st.success("Student profile updated (continual learning)")
