@@ -1,12 +1,16 @@
-from langdetect import detect
-from deep_translator import GoogleTranslator
+from googletrans import Translator
+
+translator = Translator()
+
+def translate_to_english(text):
+
+    translated = translator.translate(text, dest="en")
+
+    return translated.text
 
 
-def translate_input(text):
+def translate_back(text, lang):
 
-    lang = detect(text)
+    translated = translator.translate(text, dest=lang)
 
-    if lang != "en":
-        text = GoogleTranslator(source="auto", target="en").translate(text)
-
-    return text
+    return translated.text
