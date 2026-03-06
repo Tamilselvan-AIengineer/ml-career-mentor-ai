@@ -1,0 +1,5 @@
+Coursera Machine Learning by Andrew Ng is a popular beginner course.
+
+FastAI Practical Deep Learning teaches applied AI skills.
+
+MIT OpenCourseWare provides free AI lectures.
