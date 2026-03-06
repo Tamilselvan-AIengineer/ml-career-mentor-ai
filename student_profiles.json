@@ -1,1 +1,36 @@
-
+{
+  "students": [
+    {
+      "id": "S001",
+      "name": "Aisha Patel",
+      "level": "Intermediate",
+      "skills": {"Python": 72, "ML": 58, "Math": 85, "SQL": 65},
+      "completed": 14,
+      "total": 20
+    },
+    {
+      "id": "S002",
+      "name": "Ravi Kumar",
+      "level": "Beginner",
+      "skills": {"Python": 40, "ML": 25, "Math": 60, "SQL": 30},
+      "completed": 5,
+      "total": 20
+    },
+    {
+      "id": "S003",
+      "name": "Sara Chen",
+      "level": "Advanced",
+      "skills": {"Python": 91, "ML": 87, "Math": 95, "SQL": 88},
+      "completed": 19,
+      "total": 20
+    },
+    {
+      "id": "S004",
+      "name": "Tom Okonkwo",
+      "level": "Intermediate",
+      "skills": {"Python": 65, "ML": 70, "Math": 78, "SQL": 55},
+      "completed": 12,
+      "total": 20
+    }
+  ]
+}
