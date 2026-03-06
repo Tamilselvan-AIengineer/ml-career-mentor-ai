@@ -1,5 +1,12 @@
-Coursera Machine Learning by Andrew Ng is a popular beginner course.
-
-FastAI Practical Deep Learning teaches applied AI skills.
-
-MIT OpenCourseWare provides free AI lectures.
+Python Fundamentals (Beginner) — 4 weeks — Covers variables, loops, functions, OOP
+Data Science with Python (Intermediate) — 8 weeks — NumPy, Pandas, Matplotlib, Seaborn
+Machine Learning A-Z (Intermediate) — 10 weeks — Supervised, Unsupervised, Feature Engineering
+Deep Learning & Neural Networks (Advanced) — 12 weeks — CNNs, RNNs, Transformers, PyTorch
+Natural Language Processing (Advanced) — 8 weeks — BERT, GPT, embeddings, RAG
+SQL for Data Analysis (Beginner) — 3 weeks — Joins, aggregations, window functions
+Statistics for ML (Intermediate) — 6 weeks — Probability, hypothesis testing, Bayesian methods
+MLOps & Deployment (Advanced) — 6 weeks — Docker, FastAPI, CI/CD, model monitoring
+Computer Vision (Advanced) — 8 weeks — Image classification, object detection, YOLO
+Reinforcement Learning (Advanced) — 10 weeks — Q-learning, PPO, multi-agent systems
+Data Engineering (Intermediate) — 6 weeks — Airflow, Spark, data pipelines, Kafka
+AI Ethics & Responsible ML (All levels) — 2 weeks — Bias, fairness, interpretability
