@@ -1,0 +1,7 @@
+Python is the most important programming language for AI.
+
+Machine learning requires statistics and linear algebra.
+
+Deep learning requires neural networks and GPU computing.
+
+Data structures are essential for software engineering interviews.
