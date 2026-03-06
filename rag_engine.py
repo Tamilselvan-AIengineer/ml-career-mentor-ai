@@ -6,20 +6,21 @@ class CareerRAG:
 
     def __init__(self):
 
-        self.model = SentenceTransformer(
+        self.embed_model = SentenceTransformer(
             "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
         )
 
-        self.docs = []
-        self.load_docs()
+        self.documents = []
+        self.load_documents()
 
-        embeddings = self.model.encode(self.docs)
+        embeddings = self.embed_model.encode(self.documents)
 
-        dim = embeddings.shape[1]
-        self.index = faiss.IndexFlatL2(dim)
+        dimension = embeddings.shape[1]
+
+        self.index = faiss.IndexFlatL2(dimension)
         self.index.add(np.array(embeddings))
 
-    def load_docs(self):
+    def load_documents(self):
 
         files = [
             "data/careers.txt",
@@ -29,16 +30,17 @@ class CareerRAG:
 
         for f in files:
             with open(f) as file:
-                self.docs += file.readlines()
+                self.documents += file.readlines()
 
     def retrieve(self, query):
 
-        q = self.model.encode([query])
-        D, I = self.index.search(np.array(q), k=3)
+        q_embed = self.embed_model.encode([query])
+
+        D, I = self.index.search(np.array(q_embed), k=3)
 
         context = ""
-        for i in I[0]:
-            context += self.docs[i]
+
+        for idx in I[0]:
+            context += self.documents[idx]
 
         return context
-        
