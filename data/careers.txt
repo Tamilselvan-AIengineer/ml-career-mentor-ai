@@ -1,5 +1,12 @@
-Machine Learning Engineer builds predictive models using Python and ML frameworks.
-
-Data Scientist analyzes data using statistics, machine learning, and visualization.
-
-AI Engineer develops intelligent systems using deep learning and NLP.
+Data Scientist — Analyze complex data sets, build predictive models, communicate insights
+Machine Learning Engineer — Design, build, and deploy ML systems at scale
+AI Research Scientist — Advance the state of AI through novel algorithms and publications
+Data Analyst — Explore data, create dashboards, support business decisions
+NLP Engineer — Build language models, chatbots, and text processing pipelines
+Computer Vision Engineer — Develop image and video understanding systems
+MLOps Engineer — Manage ML infrastructure, pipelines, and model lifecycle
+Data Engineer — Build and maintain data pipelines and warehouses
+AI Product Manager — Bridge technical AI capabilities with business strategy
+Quantitative Analyst — Apply mathematical models to finance and risk
+Robotics Engineer — Integrate AI with physical systems and control loops
+AI Ethics Specialist — Ensure responsible, fair, and transparent AI deployments
