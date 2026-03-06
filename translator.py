@@ -1,5 +1,6 @@
 from transformers import MarianMTModel, MarianTokenizer
 
+
 class Translator:
 
     def __init__(self):
@@ -11,12 +12,13 @@ class Translator:
 
     def translate_to_english(self, text):
 
-        tokens = self.tokenizer(text, return_tensors="pt", padding=True)
+        inputs = self.tokenizer(text, return_tensors="pt", padding=True)
 
-        translated = self.model.generate(**tokens)
+        translated = self.model.generate(**inputs)
 
         output = self.tokenizer.decode(
-            translated[0], skip_special_tokens=True
+            translated[0],
+            skip_special_tokens=True
         )
 
         return output
