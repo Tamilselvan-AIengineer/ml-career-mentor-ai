@@ -3,6 +3,7 @@ sentence-transformers
 faiss-cpu
 transformers
 torch
-langdetect
-deep-translator
+googletrans==4.0.0rc1
+numpy
 pandas
+scikit-learn
