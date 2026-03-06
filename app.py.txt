@@ -1,0 +1,56 @@
+import streamlit as st
+from rag_engine import retrieve_context
+from skill_analyzer import analyze_skill_gap
+from translator import translate_input
+
+st.title("🎓 AI Career Mentor Guide")
+
+st.sidebar.header("Student Profile")
+
+name = st.sidebar.text_input("Name")
+
+year = st.sidebar.selectbox(
+"Academic Year",
+["1st Year","2nd Year","3rd Year","4th Year"]
+)
+
+skills = st.sidebar.text_input(
+"Your skills (comma separated)"
+)
+
+query = st.text_input(
+"Ask career guidance question"
+)
+
+if query:
+
+    query = translate_input(query)
+
+    context = retrieve_context(query)
+
+    st.subheader("Suggested Career")
+
+    st.write(context["career"])
+
+    student_skills = skills.split(",")
+
+    missing = analyze_skill_gap(
+        student_skills,
+        context["skills"]
+    )
+
+    st.subheader("Required Skills")
+
+    st.write(context["skills"])
+
+    st.subheader("Skill Gap")
+
+    if missing:
+        st.write(missing)
+    else:
+        st.success("You already have the required skills!")
+
+    st.subheader("Career Roadmap")
+
+    for step in context["roadmap"]:
+        st.write("•", step)

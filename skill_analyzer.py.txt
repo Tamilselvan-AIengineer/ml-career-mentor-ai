@@ -1,0 +1,10 @@
+def analyze_skill_gap(student_skills, required_skills):
+
+    missing = []
+
+    for skill in required_skills:
+
+        if skill.lower() not in [s.lower() for s in student_skills]:
+            missing.append(skill)
+
+    return missing

@@ -1,0 +1,27 @@
+from sentence_transformers import SentenceTransformer
+import faiss
+import json
+import numpy as np
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+with open("data/career_data.json") as f:
+    data = json.load(f)
+
+documents = [d["career"] + " " + " ".join(d["skills"]) for d in data]
+
+embeddings = model.encode(documents)
+
+dimension = embeddings.shape[1]
+
+index = faiss.IndexFlatL2(dimension)
+index.add(np.array(embeddings))
+
+
+def retrieve_context(query):
+
+    q_emb = model.encode([query])
+
+    D, I = index.search(np.array(q_emb), k=1)
+
+    return data[I[0][0]]
