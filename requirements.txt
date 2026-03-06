@@ -7,3 +7,4 @@ sentencepiece
 numpy
 pandas
 scikit-learn
+deep-translator
