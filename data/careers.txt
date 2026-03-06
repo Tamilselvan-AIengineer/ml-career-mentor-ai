@@ -1,0 +1,5 @@
+Machine Learning Engineer builds predictive models using Python and ML frameworks.
+
+Data Scientist analyzes data using statistics, machine learning, and visualization.
+
+AI Engineer develops intelligent systems using deep learning and NLP.
