@@ -1,16 +1,22 @@
-from googletrans import Translator
+from transformers import MarianMTModel, MarianTokenizer
 
-translator = Translator()
+class Translator:
 
-def translate_to_english(text):
+    def __init__(self):
 
-    translated = translator.translate(text, dest="en")
+        model_name = "Helsinki-NLP/opus-mt-mul-en"
 
-    return translated.text
+        self.tokenizer = MarianTokenizer.from_pretrained(model_name)
+        self.model = MarianMTModel.from_pretrained(model_name)
 
+    def translate_to_english(self, text):
 
-def translate_back(text, lang):
+        tokens = self.tokenizer(text, return_tensors="pt", padding=True)
 
-    translated = translator.translate(text, dest=lang)
+        translated = self.model.generate(**tokens)
 
-    return translated.text
+        output = self.tokenizer.decode(
+            translated[0], skip_special_tokens=True
+        )
+
+        return output
