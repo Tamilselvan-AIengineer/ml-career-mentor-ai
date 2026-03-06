@@ -1,7 +1,20 @@
-Python is the most important programming language for AI.
-
-Machine learning requires statistics and linear algebra.
-
-Deep learning requires neural networks and GPU computing.
-
-Data structures are essential for software engineering interviews.
+Python, R, Julia, MATLAB
+TensorFlow, PyTorch, JAX, Keras
+Scikit-learn, XGBoost, LightGBM, CatBoost
+SQL, PostgreSQL, MongoDB, Redis
+Spark, Hadoop, Kafka, Airflow
+Docker, Kubernetes, FastAPI, Flask
+BERT, GPT, LLaMA, Mistral, Embeddings
+FAISS, ChromaDB, Pinecone, Weaviate
+NumPy, Pandas, Matplotlib, Seaborn, Plotly
+Statistics, Probability, Linear Algebra, Calculus
+Git, GitHub Actions, MLflow, DVC, Weights & Biases
+AWS SageMaker, GCP Vertex AI, Azure ML
+Computer Vision, Object Detection, Image Segmentation
+NLP, Text Classification, Named Entity Recognition
+Reinforcement Learning, Multi-agent Systems
+Data Visualization, Tableau, Power BI
+A/B Testing, Experimentation, Causal Inference
+Feature Engineering, Dimensionality Reduction
+Model Interpretability, SHAP, LIME
+Ethics, Bias Detection, Fairness Metrics
