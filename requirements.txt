@@ -3,7 +3,7 @@ sentence-transformers
 faiss-cpu
 transformers
 torch
-googletrans==4.0.0rc1
+sentencepiece
 numpy
 pandas
 scikit-learn
