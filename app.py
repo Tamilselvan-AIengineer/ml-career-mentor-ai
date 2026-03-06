@@ -53,4 +53,5 @@ if query:
     st.subheader("Career Roadmap")
 
     for step in context["roadmap"]:
+
         st.write("•", step)
