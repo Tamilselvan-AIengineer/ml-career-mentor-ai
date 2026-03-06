@@ -1,0 +1,24 @@
+[
+{
+"career":"Machine Learning Engineer",
+"skills":["Python","Statistics","Machine Learning","Deep Learning","TensorFlow"],
+"roadmap":[
+"Learn Python programming",
+"Study linear algebra and statistics",
+"Build ML projects",
+"Learn deep learning frameworks",
+"Apply for ML internships"
+]
+},
+{
+"career":"Data Scientist",
+"skills":["Python","SQL","Statistics","Machine Learning","Data Visualization"],
+"roadmap":[
+"Learn Python and SQL",
+"Understand statistics",
+"Work on real datasets",
+"Build data science portfolio",
+"Prepare for data science interviews"
+]
+}
+]
